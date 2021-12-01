@@ -107,6 +107,7 @@ services:
     << : *default-volumes # loads the defined volumes from the top
     environment:
       << : *default-environment # loads the defined environment variables from the top
+      XDEBUG_ENABLE: "true"
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.name: nginx # we want this service be part of the nginx pod in Lagoon
