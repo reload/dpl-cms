@@ -6,8 +6,6 @@ env:
   COMPOSER_VERSION: v2
   LHCI_COLLECT_URL: http://varnish:8080/
   LHCI_SERVER_URL: https://lighthouse-ci.reload.dk/
-  LHCI_UPLOAD_TOKEN: ${{ secrets.LHCI_UPLOAD_TOKEN }}
-  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
 jobs:
   ValidateComposer:
