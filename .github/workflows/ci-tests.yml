@@ -93,12 +93,8 @@ jobs:
           # Our Taskfile requires a proper checkout to function because of
           # certain vars.
           fetch-depth: 0
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
       - name: Debug branch
-        run: echo ${{ steps.extract_branch.outputs.branch }}
+        run: echo ${GITHUB_REF##*/}
       - name: Debug env
         run: printenv
       - name: Install go-task
@@ -114,7 +110,7 @@ jobs:
       LHCI_SERVER_URL: https://lighthouse-ci.reload.dk/
       LHCI_UPLOAD_TOKEN: ${{ secrets.LHCI_UPLOAD_TOKEN }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ steps.extract_branch.outputs.branch }}
+      LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${GITHUB_REF##*/}
 
   # LightHouse:
   #   name: Test site performance using Lighthouse
