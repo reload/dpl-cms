@@ -255,7 +255,6 @@ tasks:
           -e LHCI_BUILD_CONTEXT__CURRENT_BRANCH={{ .LHCI_BUILD_CONTEXT__CURRENT_BRANCH }} \
         node-chrome npx lhci autorun \
           --failOnUploadFailure \
-          --collect.url=$LHCI_COLLECT_URL \
           --upload.serverBaseUrl=$LHCI_SERVER_URL \
           --upload.token=$LHCI_UPLOAD_TOKEN \
           --upload.ignoreDuplicateBuildFailure=true \
