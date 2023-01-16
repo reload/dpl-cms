@@ -249,13 +249,13 @@ tasks:
     deps: [ci:wiremock:create-mappings]
     cmds:
       - |
-        echo $LHCI_COLLECT_URL; echo $LHCI_SERVER_URL; echo $LHCI_UPLOAD_TOKEN
         docker compose {{ .DOCKER_COMPOSE_FILES_CI }} run --rm -e HTTP_PROXY={{ .WIREMOCK_HOST_DOCKER }} node-chrome npx lhci autorun \
         --failOnUploadFailure \
         --collect.url=$LHCI_COLLECT_URL \
         --upload.serverBaseUrl=$LHCI_SERVER_URL \
         --upload.token=$LHCI_UPLOAD_TOKEN \
-        --upload.ignoreDuplicateBuildFailure=true
+        --upload.ignoreDuplicateBuildFailure=true \
+        --upload.target=lhci
 
   ci:openapi:validate:
     desc: Validate the Drupal OpenAPI specification
