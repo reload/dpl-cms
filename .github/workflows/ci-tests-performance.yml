@@ -1,5 +1,5 @@
-# These workflows takes care running Lighthouse CI tests.
-name: CI Tests Lighthouse
+# These workflows takes care running Performance related CI tests.
+name: Performance
 on:
   push:
     branches:
