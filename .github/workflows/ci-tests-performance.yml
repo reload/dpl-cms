@@ -1,0 +1,36 @@
+# These workflows takes care running Performance related CI tests.
+name: Performance
+on:
+  push:
+    branches:
+    - develop-reload
+  pull_request:
+
+jobs:
+  LightHouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Our Taskfile requires a proper checkout to function because of
+          # certain vars.
+          fetch-depth: 0
+      - name: Debug branch
+        run: echo ${{ github.head_ref || github.ref_name }}
+      - name: Debug env
+        run: printenv
+      - name: Install go-task
+        uses: arduino/setup-task@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup site
+        run: task ci:reset
+      - name: Lighthouse CI
+        run: task ci:lighthouse:server
+    env:
+      LHCI_COLLECT_URL: http://varnish:8080/
+      LHCI_SERVER_URL: https://lighthouse-ci.reload.dk/
+      LHCI_UPLOAD_TOKEN: ${{ secrets.LHCI_UPLOAD_TOKEN }}
+      LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.head_ref || github.ref_name }}
