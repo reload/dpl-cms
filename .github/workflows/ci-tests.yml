@@ -94,7 +94,7 @@ jobs:
           # certain vars.
           fetch-depth: 0
       - name: Debug branch
-        run: echo ${GITHUB_REF##*/}
+        run: echo ${{ github.head_ref || github.ref_name }}
       - name: Debug env
         run: printenv
       - name: Install go-task
@@ -110,7 +110,7 @@ jobs:
       LHCI_SERVER_URL: https://lighthouse-ci.reload.dk/
       LHCI_UPLOAD_TOKEN: ${{ secrets.LHCI_UPLOAD_TOKEN }}
       LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
-      LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${GITHUB_REF##*/}
+      LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.head_ref || github.ref_name }}
 
   # LightHouse:
   #   name: Test site performance using Lighthouse
