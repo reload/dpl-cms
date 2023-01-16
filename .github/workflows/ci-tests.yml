@@ -4,6 +4,9 @@ name: CI Tests
 env:
   PHP_VERSION: 8.0
   COMPOSER_VERSION: v2
+  LHCI_COLLECT_URL: http://varnish:8080/
+  LHCI_SERVER_URL: https://lighthouse-ci.reload.dk/
+  LHCI_UPLOAD_TOKEN: ${{ secrets.LHCI_UPLOAD_TOKEN }}
 
 jobs:
   ValidateComposer:
@@ -83,6 +86,32 @@ jobs:
           composer install --no-interaction --no-progress
       - name: Run PhpUnit
         run: ./vendor/bin/phpunit --coverage-text
+
+  LightHouseCIServer:
+    name: Lighthouse CI Server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Our Taskfile requires a proper checkout to function because of
+          # certain vars.
+          fetch-depth: 0
+      - name: Install go-task
+        uses: arduino/setup-task@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup site
+        run: task ci:reset
+      - name: Lighthouse CI
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        run: |
+          yarn global add @lhci/cli@0.10.x
+          lhci autorun \
+            --collect.url=$LHCI_COLLECT_URL \
+            --upload.serverBaseUrl=$LHCI_SERVER_URL \
+            --upload.token=$LHCI_UPLOAD_TOKEN \
+            --upload.ignoreDuplicateBuildFailure=true \
 
   LightHouse:
     name: Test site performance using Lighthouse
