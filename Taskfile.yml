@@ -249,7 +249,11 @@ tasks:
     deps: [ci:wiremock:create-mappings]
     cmds:
       - |
-        docker compose {{ .DOCKER_COMPOSE_FILES_CI }} run --rm -e HTTP_PROXY={{ .WIREMOCK_HOST_DOCKER }} node-chrome npx lhci autorun \
+        docker compose {{ .DOCKER_COMPOSE_FILES_CI }} run --rm \
+        -e HTTP_PROXY={{ .WIREMOCK_HOST_DOCKER }} \
+        -e LHCI_GITHUB_APP_TOKEN={{ .LHCI_GITHUB_APP_TOKEN }} \
+        -e LHCI_BUILD_CONTEXT__CURRENT_BRANCH={{ .LHCI_BUILD_CONTEXT__CURRENT_BRANCH }} \
+        node-chrome npx lhci autorun \
         --failOnUploadFailure \
         --collect.url=$LHCI_COLLECT_URL \
         --upload.serverBaseUrl=$LHCI_SERVER_URL \
