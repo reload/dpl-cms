@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66da6f72f489d09ba0c066bdcb83c613",
+    "content-hash": "7010ee86e431b325eda33116bf32f6f1",
     "packages": [
         {
             "name": "amazeeio/drupal_integrations",
@@ -1089,7 +1089,7 @@
             "version": "0.3.0-rc10",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/danskernesdigitalebibliotek/dpl-react/releases/download/release-develop/dist.zip"
+                "url": "https://github.com/reload/dpl-react/releases/download/release-lazyload-search-results-plus-mount-set-timeout/dist.zip"
             },
             "require": {
                 "composer/installers": "^1.2.0"
@@ -1098,7 +1098,7 @@
         },
         {
             "name": "danskernesdigitalebibliotek/fbs-client",
-            "version": "dev-main",
+            "version": "dev-gradvis-tilforsel-af-performance-forbedringer-pa-sogeside-DDFSOEG-391",
             "dist": {
                 "type": "path",
                 "url": "packages/fbs-client",
