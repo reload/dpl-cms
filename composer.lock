@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7010ee86e431b325eda33116bf32f6f1",
+    "content-hash": "09f115d13cfd2d788be035988cf61254",
     "packages": [
         {
             "name": "amazeeio/drupal_integrations",
@@ -1080,7 +1080,7 @@
             "version": "v1.7.0-rc3",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/danskernesdigitalebibliotek/dpl-design-system/releases/download/release-develop/dist.zip"
+                "url": "https://github.com/reload/dpl-design-system/releases/download/release-lazyload-search-results/dist.zip"
             },
             "type": "drupal-library"
         },
@@ -1098,7 +1098,7 @@
         },
         {
             "name": "danskernesdigitalebibliotek/fbs-client",
-            "version": "dev-main",
+            "version": "dev-gradvis-tilforsel-af-performance-forbedringer-pa-sogeside-DDFSOEG-391",
             "dist": {
                 "type": "path",
                 "url": "packages/fbs-client",
