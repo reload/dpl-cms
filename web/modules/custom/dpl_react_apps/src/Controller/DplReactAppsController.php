@@ -460,6 +460,7 @@ class DplReactAppsController extends ControllerBase {
       'open-order-service-unavailable-text' => $this->t("Service is currently unavailable", [], ['context' => 'Work Page']),
       'open-order-owned-wrong-mediumtype-text' => $this->t("Item available but medium type not accepted", [], ['context' => 'Work Page']),
       'open-order-owned-own-catalogue-text' => $this->t("Item available, order through the library's catalogue", [], ['context' => 'Work Page']),
+      'open-order-status-owned-accepted-text' => $this->t("Your order is accepted", [], ['context' => 'Work Page']),
 
         // Add external API base urls.
     ] + self::externalApiBaseUrls();
