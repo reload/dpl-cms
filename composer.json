@@ -17,7 +17,7 @@
             "type": "package",
             "package": {
                 "name": "danskernesdigitalebibliotek/dpl-react",
-                "version": "0.3.0-rc49",
+                "version": "0.3.0-rc50",
                 "type": "drupal-library",
                 "dist": {
                     "url": "https://github.com/reload/dpl-react/releases/download/release-move-material-button-reservable-from-another-library/dist.zip",
